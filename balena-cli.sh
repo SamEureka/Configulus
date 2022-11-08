@@ -18,9 +18,10 @@ if [[ -L "/usr/bin/balena-cli" ]]; then
   if [[ -e "/usr/bin/balena" ]]; then
     echo "balena-cli is linked"
   else
-  echo "rebuilding balena-cli link"
+    echo "rebuilding balena-cli link"
     unlink /usr/bin/balena
     ln -s /usr/local/share/balena-cli/balena /usr/bin/balena
+  fi
 else
   echo "linking balena-cli"
   ln -s /usr/local/share/balena-cli/balena /usr/bin/balena
