@@ -4,6 +4,7 @@
 ## Sam Dennon // 2022
 
 # Set the CLI version
+echo "INstalling balena-cli"
 BALENA_CLI_VERSION="${BALENA_CLI_VERSION:-v14.3.1}"
 sudo -s -- <<EOF
 mkdir -p /usr/local/share/balena-cli
