@@ -16,14 +16,14 @@ unzip -qq -o /usr/local/share/balena-cli.zip -d /usr/local/share/
 rm /usr/local/share/balena-cli.zip
 if [[ -L "/usr/bin/balena" ]]
   then
-    if [[ -e "/usr/bin/balena" ]]
-      then
-        echo "balena-cli is linked"
-    else
-      echo "rebuilding balena-cli link"
-      unlink /usr/bin/balena
-      ln -s /usr/local/share/balena-cli/balena /usr/bin/balena
-    fi
+  if [[ -e "/usr/bin/balena" ]]
+    then
+    echo "balena-cli is linked"
+  else
+    echo "rebuilding balena-cli link"
+    unlink /usr/bin/balena
+    ln -s /usr/local/share/balena-cli/balena /usr/bin/balena
+  fi
 else
   echo "linking balena-cli"
   ln -s /usr/local/share/balena-cli/balena /usr/bin/balena
