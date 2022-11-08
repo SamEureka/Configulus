@@ -5,7 +5,7 @@
 
 # balena-cli version passed as an arg or defaulted. 
 VERSION=${1:-v14.5.2}
-if echo $VERSION | egrep -q 'v.*\..*\.'
+if echo $VERSION | grep -q -E '^v([[:digit:]]*\.[[:digit:]]*\.[[:digit:]]*)$'
   then
   export BALENA_CLI_VERSION=${VERSION}
 else
