@@ -6,7 +6,7 @@ This is a collection of scripts that I use to setup Linux workstations. I prefer
 * 'main' contains Ubuntu specific scripts
 * 'alpine' containes Alpine Linux scripts
 
-### Phases
+### Temporibus
 * Phase one of this project is to get the scripts working and install the things I like. 
 * Phase two is to potentially auto-config my Gnome settings and extensions. 
 * Phase three is to pair down (auto-remove) all the bloaty stuff. Applications that I am not likely to ever use and normally ignore.    
