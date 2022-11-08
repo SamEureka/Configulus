@@ -3,11 +3,18 @@
 ## balena-cli install script
 ## Sam Dennon // 2022
 
-VERSION=v14.5.2
+# balena-cli version passed as an arg or defaulted. 
+VERSION=${1:-v14.5.2}
+if echo $VERSION | egrep -q 'v.*\..*\.'
+  then
+  export BALENA_CLI_VERSION=${VERSION}
+else
+  echo "balena-cli version format should be vX.X.X"
+  exit 1
+fi
 
-# Set the CLI version
+# INstall CLI
 echo "INstalling balena-cli"
-BALENA_CLI_VERSION="${BALENA_CLI_VERSION:-${VERSION}}"
 sudo -s -- <<EOF
 mkdir -p /usr/local/share/balena-cli
 wget -qO /usr/local/share/balena-cli.zip \
