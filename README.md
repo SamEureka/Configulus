@@ -28,5 +28,5 @@ This is a collection of scripts that I use to setup Linux workstations. I prefer
 
 **gh-cli** `curl https://shortenedurl | bash -s`
 
-**Powerlevel10k** `sh -c "$(wget -q -O- https://bit.ly/powerlevel10k)`
+**Powerlevel10k** `sh -c "$(wget -q -O- https://bit.ly/powerlevel10k)"`
 
