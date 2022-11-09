@@ -5,7 +5,7 @@
 
 if [ -d /usr/share/fonts/nerd/ ]
   then
-    echo "Nerd Fonts already installed, exiting."
+    echo "NerdFonts already installed, exiting."
     exit 1
   else
     echo "INstalling NerdFonts (sudo required)"
@@ -20,6 +20,6 @@ wget -qO /usr/share/fonts/nerd/NF4.zip "http://bit.ly/3TlMk11"
 wget -qO /usr/share/fonts/nerd/NF5.zip "http://bit.ly/3GabpsC"
 unzip -qj "/usr/share/fonts/nerd/*.zip" -d /usr/share/fonts/nerd
 rm /usr/share/fonts/nerd/*.zip
-fc-cache -f -v
+fc-cache -f -v > /dev/null 2>&1
 echo "NerdFonts installed"
 EOF
