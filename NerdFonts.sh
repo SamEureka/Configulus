@@ -3,7 +3,13 @@
 ## NerdFont install script
 ## Sam Dennon // 2022
 
-echo "INstalling NerdFonts (sudo required)"
+if [ -d /usr/share/fonts/nerd/ ]
+  then
+    echo "Nerd Fonts already installed, exiting."
+    exit 1
+  else
+    echo "INstalling NerdFonts (sudo required)"
+fi
 
 sudo -s -- <<EOF
 mkdir -p /usr/share/fonts/nerd
