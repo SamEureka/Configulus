@@ -20,6 +20,8 @@ This is a collection of scripts that I use to setup Linux workstations. I prefer
 
 ## Scripta
 
+**NerdFonts:** `sh -c "$(wget -q -O- https://bit.ly/NerdFonts)"` 
+
 **Etcher:** `curl https://shortenedurl | bash -s`
 
 **balena-cli:** `sh -c "$(wget -q -O- https://bit.ly/balena-cli)"` -or- `sh -c "$(wget -q -O- https://bit.ly/balena-cli)" -s <version>`
