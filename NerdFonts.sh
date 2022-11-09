@@ -17,4 +17,3 @@ rm /usr/share/fonts/nerd/*.zip
 fc-cache -f -v
 echo "NerdFonts installed"
 EOF
-gsettings set org.gnome.desktop.interface monospace-font-name 'OperatorMonoLig Nerd Font 14'
