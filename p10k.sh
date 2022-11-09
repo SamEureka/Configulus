@@ -29,7 +29,7 @@ esac
 if fc-list | grep -q "Operator Mono Lig Book NF.otf"
   then
     echo "Setting Gnome monospace font to Operator Mono Nerd Font"
-    gsettings set org.gnome.desktop.interface monospace-font-name 'OperatorMono Nerd Font Light 14'
+    gsettings set org.gnome.desktop.interface monospace-font-name 'SauceCodePro Nerd Font Mono Regular 14'
   else
     echo 'Nerd fonts not installed. Please run `sh -c "$(wget -O- https://bit.ly/NerdFonts)"` to install.'
     exit 1
