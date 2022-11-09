@@ -26,7 +26,7 @@ case $ANSWER in
     exit 1;;
 esac
 
-if [ -e "/usr/share/fonts/nerd/Operator Mono Lig Book NF.otf" ]
+if fc-list | grep -q "Operator Mono Lig Book NF.otf"
   then
     echo "Setting Gnome monospace font to Operator Mono Nerd Font"
     gsettings set org.gnome.desktop.interface monospace-font-name 'OperatorMonoLig Nerd Font 14'
