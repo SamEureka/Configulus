@@ -24,7 +24,13 @@ This is a collection of scripts that I use to setup Linux workstations. I prefer
 
 **Etcher:** `curl https://shortenedurl | bash -s`
 
-**balena-cli:** `sh -c "$(wget -q -O- https://bit.ly/balena-cli)"` -or- `sh -c "$(wget -q -O- https://bit.ly/balena-cli)" -s <version>`
+**balena-cli:** 
+
+`sh -c "$(wget -q -O- https://bit.ly/balena-cli)"` 
+
+-or- 
+
+`sh -c "$(wget -q -O- https://bit.ly/balena-cli)" -s <version>`
 
 **gh-cli:** `curl https://shortenedurl | bash -s`
 
