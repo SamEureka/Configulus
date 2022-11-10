@@ -6,12 +6,14 @@
 echo "We need to collect some info from you."
 read -p 'Github username: ' GH_USERNAME
 read -p 'Github email address: ' GH_EMAIL
+read -p 'What name do you want to use for the default branch in git repos? ' GH_DEFAULT
 read -p 'Your username on this system: ' USER
 echo " "
 echo "Is this info correct?"
 echo " "
 echo "Github username: $GH_USERNAME"
 echo "Github email address: $GH_EMAIL"
+echo "git default branch name: $GH_DEFAULT"
 echo "System username: $USER"
 read -p '(y)es / (n)o: ' ANSWER
 
@@ -39,6 +41,7 @@ sudo chsh -s /usr/bin/zsh $USER
 
 git config --global user.name $GH_USERNAME
 git config --global user.email $GH_EMAIL
+git config --global init.defaultBranch $GH_DEFAULT
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
