@@ -23,7 +23,7 @@ echo "Downloading Font zip four..."
 wget -qO /usr/share/fonts/nerd/NF4.zip "http://bit.ly/3TlMk11"
 echo "Downloading Font zip five..."
 wget -qO /usr/share/fonts/nerd/NF5.zip "http://bit.ly/3GabpsC"
-echo "un-zzzzzzzzzzzzzzzzzip......!"
+echo "un-zzzzzzzzzzzzzzzzzip......"
 unzip -qj "/usr/share/fonts/nerd/*.zip" -d /usr/share/fonts/nerd
 rm /usr/share/fonts/nerd/*.zip
 echo "Rebuilding the font cache."
