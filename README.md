@@ -17,6 +17,8 @@ This is a collection of scripts that I use to setup Linux workstations. I prefer
   2. `export GH_USERNAME=<your github username>`
   3. `export SHELL=<path to zsh>`
   4. `sudo apt update && sudo apt -qqq -y install git zsh bash nano neofetch wget curl`
+  5. (Alpine {root}) `apk add git zsh bash nano neofetch wget curl`
+  6. (Alpine {root}) `apk add flatpak ; flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo`
 
 ## Scripta
 
