@@ -38,5 +38,8 @@ This is a collection of scripts that I use to setup Linux workstations. I prefer
 
 **Powerlevel10k:** `sh -c "$(wget -q -O- https://bit.ly/powerlevel10k)"`
 
+**Powerlevel10k Alpine:** `sh -c "$(wget -q -O- https://bit.ly/p10k-alpine)"`
+
 **NVM:** `wget -qO- https://bit.ly/NVM-Install | bash`
+
 
