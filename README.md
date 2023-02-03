@@ -42,4 +42,24 @@ This is a collection of scripts that I use to setup Linux workstations. I prefer
 
 **NVM:** `wget -qO- https://bit.ly/NVM-Install | bash`
 
+## Habemus
 
+Neofetch ubuntu issue
+```
+$ git diff neofetch| cat -A
+diff --git a/neofetch b/neofetch$
+index 48b96d21..d42cc3ea 100755$
+--- a/neofetch$
++++ b/neofetch$
+@@ -3982,8 +3982,8 @@ get_cols() {$
+         printf -v block_spaces "%${block_height}s"$
+ $
+         # Convert the spaces into rows of blocks.$
+-        [[ "$blocks"  ]] && cols+="${block_spaces// /${blocks}^[[mnl}"$
+-        [[ "$blocks2" ]] && cols+="${block_spaces// /${blocks2}^[[mnl}"$
++        [[ "$blocks"  ]] && cols+="${block_spaces// /${blocks}^[\[mnl}"$
++        [[ "$blocks2" ]] && cols+="${block_spaces// /${blocks2}^[\[mnl}"$
+ $
+         # Add newlines to the string.$
+         cols=${cols%%nl}$
+ ```
