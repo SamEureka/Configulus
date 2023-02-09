@@ -1,6 +1,6 @@
 # Configulus
 
-This is a collection of scripts that I use to setup Linux workstations. I prefer Gnome, ZSH, Powerlevel10k, Alpine & Ubuntu Linux (If I could get Chrome Stable to run on Alpine, I'd never look back!), VSCode, and Chrome (not Chromium). I got tired of all the google searching for "how do I install that thing again?" and typing all those commands! 
+This is a collection of scripts that I use to setup Linux workstations. I prefer Gnome, ZSH, Powerlevel10k, Alpine & Ubuntu Linux (I would daily drive Alpine Gnome if Alpine was glbic and not musl libc based), VSCode, and Chrome (not Chromium). I got tired of all the google searching for "how do I install that thing again?" and typing all those commands! 
 
 ### Rami
 * 'main' contains Ubuntu specific scripts
