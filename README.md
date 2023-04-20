@@ -42,7 +42,7 @@ This is a collection of scripts that I use to setup Linux workstations. I prefer
 
 **NVM:** `wget -qO- https://bit.ly/NVM-Install | bash`
 
-**Nano Syntax Highlighting:** `curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh`
+**Nano Syntax:** `curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh`
 
 ## Habemus
 
