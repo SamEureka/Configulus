@@ -2,7 +2,7 @@
 
 echo "This script is going to install KVM. What user do you want to have access?
 read -p 'username: ' KVM_USER
-echo " You can add aditional users later with 'adduser <username> libvirt'"
+echo " You can add aditional users later with: adduser <username> libvirt"
 echo " ...is $KVM_USER the one you want to add?"
 read -p '(y)es / (n)o: ' ANSWER
 
