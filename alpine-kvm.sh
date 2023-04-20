@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "This script is going to install KVM. What user do you want to have access?"
 read -p 'username: ' KVM_USER
