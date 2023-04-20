@@ -55,5 +55,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+alias ls="ls --colors=auto"
+alias lsa="ls -al --colors=auto"
 EOF
 exec zsh
