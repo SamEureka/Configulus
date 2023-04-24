@@ -1,4 +1,4 @@
-#!/usr/bin/env aash
+#!/usr/bin/env ash
 
 ## P10k Install Script (for Alpine)
 ## Sam Dennon // 2022
@@ -28,14 +28,14 @@ case $ANSWER in
     exit 1;;
 esac
 
-if fc-list | grep -q "Operator Mono Lig Book NF.otf"
-  then
-    echo "Setting Gnome monospace font to Operator Mono Nerd Font"
-    gsettings set org.gnome.desktop.interface monospace-font-name 'SauceCodePro Nerd Font Mono Regular 14'
-  else
-    echo 'Nerd fonts not installed. Please run `sh -c "$(wget -O- https://bit.ly/NerdFonts)"` to install.'
-    exit 1
-fi
+#if fc-list | grep -q "Operator Mono Lig Book NF.otf"
+#  then
+#    echo "Setting Gnome monospace font to Operator Mono Nerd Font"
+#    gsettings set org.gnome.desktop.interface monospace-font-name 'SauceCodePro Nerd Font Mono Regular 14'
+#  else
+#    echo 'Nerd fonts not installed. Please run `sh -c "$(wget -O- https://bit.ly/NerdFonts)"` to install.'
+#    exit 1
+#fi
 
 #TODO Add some OS Distro checking stuff...
 
@@ -57,5 +57,6 @@ SAVEHIST=10000
 setopt appendhistory
 alias ls="ls --colors=auto"
 alias lsa="ls -al --colors=auto"
+neofetch
 EOF
 exec zsh
