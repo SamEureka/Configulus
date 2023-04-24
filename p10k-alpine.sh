@@ -55,8 +55,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
-alias ls="ls --colors=auto"
-alias lsa="ls -al --colors=auto"
+alias ls="ls --color=auto"
+alias lsa="ls -al --color=auto"
 neofetch
 EOF
 exec zsh
