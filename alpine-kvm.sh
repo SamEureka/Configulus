@@ -25,6 +25,9 @@ rc-update add libvirt-guests
 rc-service libvirt-guests start
 rc-service dbus start
 rc-service libvirtd start
+addgroup $KVM_USER libvirt
+addgroup $KVM_USER kvm
+addgroup $KVM_USER qemu
 modprobe tun
 echo "tun" >> /etc/modules-load.d/tun.conf
 cat /etc/modules | grep tun || echo tun >> /etc/modules
@@ -38,6 +41,6 @@ cat << EPOL >> /etc/polkit-1/localauthority/50-local.d/50-libvirt-ssh-remote-acc
  ResultActive=yes
 EPOL
 cat << ENET >> /etc/network/interfaces
-       bridge-stp 0
-       post-up ip -6 a flush dev brlan; sysctl -w net.ipv6.conf.brlan.disable_ipv6=1
+        bridge-stp 0
+        post-up ip -6 a flush dev br0; sysctl -w net.ipv6.conf.br0.disable_ipv6=1
 ENET
