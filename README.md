@@ -40,6 +40,8 @@ This is a collection of scripts that I use to setup Linux workstations. I prefer
 
 **Powerlevel10k Alpine:** `sh -c "$(wget -q -O- https://bit.ly/p10k-alpine)"`
 
+**Alpine KVM Install** `sh -c "$(wget -q -O- https://bit.ly/alpine-kvm)"`
+
 **NVM:** `wget -qO- https://bit.ly/NVM-Install | bash`
 
 **Nano Syntax:** `curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh`
