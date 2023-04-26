@@ -17,7 +17,7 @@ case $ANSWER in
     exit 1;;
 esac
 
-sudo -s -- <<END_OF_LINE
+sudo -s -- <<EOL
 apk add libvirt-daemon qemu-img qemu-system-x86_64 qemu-system-arm qemu-system-aarch64 qemu-modules qemu-openrc dbus polkit
 rc-update add libvirtd
 rc-update add dbus
@@ -44,4 +44,4 @@ cat << ENET >> /etc/network/interfaces
         bridge-stp 0
         post-up ip -6 a flush dev br0; sysctl -w net.ipv6.conf.br0.disable_ipv6=1
 ENET
-END_OF_LINE
+EOL
