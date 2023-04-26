@@ -23,14 +23,15 @@ rc-update add libvirtd
 rc-update add dbus
 rc-update add libvirt-guests
 rc-service libvirt-guests start
-rc-service dbus start
-rc-service libvirtd start
+echo "qemu/libvirt installed and openrc services added"
 addgroup $KVM_USER libvirt
 addgroup $KVM_USER kvm
 addgroup $KVM_USER qemu
+echo "User ${KVM_USER} added to the correct groups"
 modprobe tun
 echo "tun" >> /etc/modules-load.d/tun.conf
 cat /etc/modules | grep tun || echo tun >> /etc/modules
+echo "tun module loaded and added to /etc/modules"
 mkdir -p /etc/polkit-1/localauthority/50-local.d/
 cat << EPOL >> /etc/polkit-1/localauthority/50-local.d/50-libvirt-ssh-remote-access-policy.pkla
 [Remote libvirt SSH access]
@@ -40,8 +41,12 @@ cat << EPOL >> /etc/polkit-1/localauthority/50-local.d/50-libvirt-ssh-remote-acc
  ResultInactive=yes
  ResultActive=yes
 EPOL
+echo "Polkit ssh access configured"
 cat << ENET >> /etc/network/interfaces
         bridge-stp 0
         post-up ip -6 a flush dev br0; sysctl -w net.ipv6.conf.br0.disable_ipv6=1
 ENET
+echo "added ipv6 stuff"
+echo "------------- END OF LINE --------------"
 EOL
+
