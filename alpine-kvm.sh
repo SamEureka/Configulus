@@ -1,5 +1,22 @@
 #!/bin/bash
 
+## SamEureka/Configulus ##
+##  alpine-kvm install  ##
+##  Sam Dennon // 2023  ##
+
+## root or sudo check
+if [[ $EUID -eq 0 ]]; then
+    echo "You have permission to run this script as root."
+else
+    if groups $USER | grep -q sudo; then
+        echo "You have permission to run this script with sudo."
+    else
+        echo "You do not have permission to run this script. Get some sudo and try again!"
+        exit 1337
+    fi
+fi
+
+## GEt some infos
 echo "This script is going to install KVM. What user do you want to have access?"
 read -p 'username: ' KVM_USER
 echo " You can add aditional users later with: adduser <username> libvirt"
@@ -11,14 +28,14 @@ case $ANSWER in
     echo "Cool! Let's do this!";;
   n | no | N | NO | 0 | No)
     echo "Exiting, try running the script again."
-    exit 1;;    
+    exit 130;;    
   *)
     echo "Answer not understood, try 'y' or 'n'. exiting."
-    exit 1;;
+    exit 131;;
 esac
 
 sudo -s -- <<EOL
-apk add libvirt-daemon qemu-img qemu-system-x86_64 qemu-system-arm qemu-system-aarch64 qemu-modules qemu-openrc dbus polkit
+apk add --quiet libvirt-daemon qemu-img qemu-system-x86_64 qemu-system-arm qemu-system-aarch64 qemu-modules qemu-openrc dbus polkit
 rc-update add libvirtd
 rc-update add dbus
 rc-update add libvirt-guests
