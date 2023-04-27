@@ -3,6 +3,7 @@
 ## P10k Install Script (for Alpine)
 ## Sam Dennon // 2022
 ## Updated: 27APR2023
+## Translation by ChatGPT # LOL ##
 
 ## root or sudo check
 if [[ $EUID -eq 0 ]]; then
@@ -43,15 +44,32 @@ case $ANSWER in
 esac
 
 ## TODO ask if this will be a Desktop or Server install
+function check_nerd_font() {
+    if fc-list | grep -q "Operator Mono Lig Book NF.otf"
+      then
+        echo "Setting Gnome monospace font to Operator Mono Nerd Font"
+        gsettings set org.gnome.desktop.interface monospace-font-name 'SauceCodePro Nerd Font Mono Regular 14'
+      else
+        echo 'Nerd fonts not installed. Please run `sh -c "$(wget -O- https://bit.ly/NerdFonts)"` to install.'
+        exit 1
+    fi
+}
 
-#if fc-list | grep -q "Operator Mono Lig Book NF.otf"
-#  then
-#    echo "Setting Gnome monospace font to Operator Mono Nerd Font"
-#    gsettings set org.gnome.desktop.interface monospace-font-name 'SauceCodePro Nerd Font Mono Regular 14'
-#  else
-#    echo 'Nerd fonts not installed. Please run `sh -c "$(wget -O- https://bit.ly/NerdFonts)"` to install.'
-#    exit 1
-#fi
+echo "Wird dies ein Gnome-Desktop oder ein Server sein?"
+echo "Desktop-Installationen erfordern zuerst die Installation eines Nerds."
+read -p "(1) Server : (2) Desktop" INSTALL_TYPE
+
+case $INSTALL_TYPE in
+    1 | Server | server | 1337)
+        echo "Cool! Es wird ein Server sein!";;
+    2 | Desktop | desktop | gnome | noob)
+        echo "Desktop! Gnome ist das Beste!"
+        check_nerd_font();;
+    *)
+        echo "Ich bin mir nicht sicher, was Sie wollen ... Versuchen Sie es erneut? (I'm not sure what you want... try again?)"
+        exit 1;;
+esac
+     
 
 ## TODO Add some OS Distro checking stuff...
 
