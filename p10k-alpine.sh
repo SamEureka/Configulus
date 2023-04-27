@@ -2,7 +2,21 @@
 
 ## P10k Install Script (for Alpine)
 ## Sam Dennon // 2022
+## Updated: 27APR2023
 
+## root or sudo check
+if [[ $EUID -eq 0 ]]; then
+    echo "You have permission to run this script as root."
+else
+    if groups $USER | grep -q sudo; then
+        echo "You have permission to run this script with sudo."
+    else
+        echo "You do not have permission to run this script. Get some sudo and try again!"
+        exit 1337
+    fi
+fi
+
+## Get some infos
 echo "We need to collect some info from you."
 read -p 'Github username: ' GH_USERNAME
 read -p 'Github email address: ' GH_EMAIL
@@ -28,6 +42,8 @@ case $ANSWER in
     exit 1;;
 esac
 
+## TODO ask if this will be a Desktop or Server install
+
 #if fc-list | grep -q "Operator Mono Lig Book NF.otf"
 #  then
 #    echo "Setting Gnome monospace font to Operator Mono Nerd Font"
@@ -37,7 +53,7 @@ esac
 #    exit 1
 #fi
 
-#TODO Add some OS Distro checking stuff...
+## TODO Add some OS Distro checking stuff...
 
 sudo chsh -s /bin/zsh $USER
 
