@@ -56,7 +56,7 @@ function check_nerd_font() {
 
 echo "Wird dies ein Gnome-Desktop oder ein Server sein?"
 echo "Desktop-Installationen erfordern zuerst die Installation eines Nerds."
-read -p "(1) Server : (2) Desktop" INSTALL_TYPE
+read -p "(1) Server || (2) Desktop: " INSTALL_TYPE
 
 case $INSTALL_TYPE in
     1 | Server | server | 1337)
@@ -75,26 +75,30 @@ esac
 timeout_count=0
 
 function install_zsh() {
-        apk add zsh;
-        ((timeout_count++))
-        zsh_check;
+        apk add zsh
+        let "timeout_count++"
+        zsh_check
 }
 
 function zsh_check() {
-if test -f /bin/zsh; then
-        echo "we have zshage";
+    if test -f /bin/zsh; then
+        echo "Zsh is installed."
         timeout_count=0
-        exit 0
-else
-        echo "we can has no zsh";
-        if ((timeout_count < 3)); then
-                install_zsh;
+    else
+        echo "Zsh is not installed."
+        if let "timeout_count < 3"; then
+                echo "Trying to install Zsh..."
+                install_zsh
+        else
+            echo "Failed to install Zsh after multiple attempts. Exiting."
+            exit 1
         fi
-fi
+    fi
 }
 
-
-zsh_check;
+echo "Checking for Zsh installation..."
+zsh_check
+echo "Changing the shell to zsh..."
 sudo chsh -s /bin/zsh $USER
 
 git config --global user.name $GH_USERNAME
