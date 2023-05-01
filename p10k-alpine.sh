@@ -5,10 +5,7 @@
 ## Updated: 27APR2023
 ## German translations by ChatGPT # LOL ##
 
-## Global VARS
 TIMEOUT_COUNT=0
-PACKAGES="git nano zsh bash neofetch shadow"
-FUNCS_TO_CALL=()
 
 ## root or sudo check
 root_sudo_check() {
@@ -23,6 +20,34 @@ root_sudo_check() {
         fi
     fi
 }
+
+install_bash() {
+    apk add bash
+    let "TIMEOUT_COUNT++"
+    check_and_install_you_some_bash
+}
+
+check_and_install_you_some_bash(){
+    if test -f /bin/bash; then
+        echo "We have positive bashage!"
+        TIMEOUT_COUNT=0
+    else
+        echo "get you some bash!"
+        if let "TIMEOUT_COUNT < 3"; then
+            echo "let there be bash!"
+            install_bash
+        else
+            echo "We tried a few times.... no bash for you."
+        fi
+    fi
+}
+
+
+# Check for permissions first... 
+root_sudo_check
+
+# Install you some bash
+check_and_install_you_some_bash
 
 ## Get some Github infos
 get_github_info() {
@@ -73,7 +98,7 @@ check_installed_packages (){
     INSTALLED_PACKAGES=$(apk info -e $PACKAGES)
     for package in $INSTALLED_PACKAGES; do
         PACKAGES=$(echo "$PACKAGES" | sed "s/\b$package\b//g")
-    done
+    done)
 }
 
 install_missing_packages() {
@@ -148,11 +173,12 @@ EOL
     echo "P10k installed... restart shell to initiate configurator."
 }
 
-# Check for permissions first... 
-root_sudo_check
+exec bash <<'EOB' 
+PACKAGES="git nano zsh curl sudo neofetch shadow util-linux"
+FUNCS_TO_CALL=()
 
 read -p "Do you want to configure the git globals with your Github info? (y/n) " call_func1
-if [[ $call_func1 =~ ^[Yy]$ ]]; then
+if echo "$call_func1" | grep -Eq "^[Yy]$"; then
     FUNCS_TO_CALL+=("config_git_globals")
 fi
 
@@ -175,7 +201,7 @@ esac
 
 
 read -p "Do you want to install Powerlevel 10k? (y/n) " call_func2
-if [[ $call_func2 =~ ^[Yy]$ ]]; then
+if echo "$call_func2"  ^[Yy]$ ]]; then
     FUNCS_TO_CALL+=("install_p10k")
 fi
 
@@ -198,3 +224,5 @@ for func_name in "${FUNCS_TO_CALL[@]}"; do
         *) echo "Invalid name h@x0r, lol: $func_name"; exit 1337 ;;
     esac
 done
+
+EOB
