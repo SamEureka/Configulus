@@ -49,6 +49,13 @@ root_sudo_check
 # Install you some bash
 check_and_install_you_some_bash
 
+## it's all bash below this line... be wary! ##
+
+exec bash <<'EOB'
+PACKAGES="git nano zsh curl sudo neofetch shadow util-linux"
+FUNCS_TO_CALL=()
+
+
 ## Get some Github infos
 get_github_info() {
     echo "We need to collect some info from you."
@@ -172,10 +179,7 @@ echo "---------- End of Line ----------"
 EOL
     echo "P10k installed... restart shell to initiate configurator."
 }
-
-exec bash <<'EOB' 
-PACKAGES="git nano zsh curl sudo neofetch shadow util-linux"
-FUNCS_TO_CALL=()
+ 
 
 read -p "Do you want to configure the git globals with your Github info? (y/n) " call_func1
 if echo "$call_func1" | grep -Eq "^[Yy]$"; then
