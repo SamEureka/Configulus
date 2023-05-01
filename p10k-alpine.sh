@@ -89,7 +89,7 @@ check_nerd_font() {
         echo "Setting Gnome monospace font to Operator Mono Nerd Font"
         gsettings set org.gnome.desktop.interface monospace-font-name 'SauceCodePro Nerd Font Mono Regular 14'
       else
-        echo 'Nerd fonts not installed. Please run `sh -c "$(wget -O- https://bit.ly/NerdFonts)"` to install.'
+        echo 'Nerd fonts not installed. Please run <sh -c "$(wget -O- https://bit.ly/NerdFonts)"> to install.'
         exit 1
     fi
 }
