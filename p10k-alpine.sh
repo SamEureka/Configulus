@@ -127,23 +127,23 @@ config_git_globals() {
 
 install_p10k() {
     change_shell
-    sudo -u $USER -s -- <<EOL    
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
-    cat << EOF >> ~/.zshrc
-    source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-    source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    HISTFILE=~/.zsh_history
-    HISTSIZE=10000
-    SAVEHIST=10000
-    setopt appendhistory
-    alias ls="ls --color=auto"
-    alias lsa="ls -al --color=auto"
-    neofetch
-    EOF
-    echo "---------- End of Line ----------"
+sudo -u $USER -s -- <<EOL    
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+cat << EOF >> ~/.zshrc
+source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+alias ls="ls --color=auto"
+alias lsa="ls -al --color=auto"
+neofetch
+EOF
+echo "---------- End of Line ----------"
 EOL
     echo "P10k installed... restart shell to initiate configurator."
 }
