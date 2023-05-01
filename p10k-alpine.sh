@@ -1,4 +1,4 @@
-#!/bin/ash
+#!/bin/bash
 
 ## P10k Install Script (for Alpine)
 ## Sam Dennon // 2022
@@ -51,7 +51,6 @@ check_and_install_you_some_bash
 
 ## it's all bash below this line... be wary! ##
 
-exec bash <<EOB
 PACKAGES="git nano zsh curl sudo neofetch shadow util-linux"
 FUNCS_TO_CALL=()
 
@@ -89,7 +88,7 @@ check_nerd_font() {
         echo "Setting Gnome monospace font to Operator Mono Nerd Font"
         gsettings set org.gnome.desktop.interface monospace-font-name 'SauceCodePro Nerd Font Mono Regular 14'
       else
-        echo 'Nerd fonts not installed. Please run <sh -c "$(wget -O- https://bit.ly/NerdFonts)"> to install.'
+        echo 'Nerd fonts not installed.'
         exit 1
     fi
 }
@@ -228,5 +227,3 @@ for func_name in "${FUNCS_TO_CALL[@]}"; do
         *) echo "Invalid name h@x0r, lol: $func_name"; exit 1337 ;;
     esac
 done
-
-EOB
