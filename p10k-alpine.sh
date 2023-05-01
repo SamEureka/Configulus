@@ -72,6 +72,29 @@ esac
 
 ## TODO Add some OS Distro checking stuff...
 
+timeout_count=0
+
+function install_zsh() {
+        apk add zsh;
+        ((timeout_count++))
+        zsh_check;
+}
+
+function zsh_check() {
+if test -f /bin/zsh; then
+        echo "we have zshage";
+        timeout_count=0
+        exit 0
+else
+        echo "we can has no zsh";
+        if ((timeout_count < 3)); then
+                install_zsh;
+        fi
+fi
+}
+
+
+zsh_check;
 sudo chsh -s /bin/zsh $USER
 
 git config --global user.name $GH_USERNAME
