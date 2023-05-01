@@ -45,8 +45,7 @@ esac
 
 ## TODO ask if this will be a Desktop or Server install
 function check_nerd_font() {
-    if fc-list | grep -q "Operator Mono Lig Book NF.otf"
-      then
+    if fc-list | grep -q "Operator Mono Lig Book NF.otf"; then
         echo "Setting Gnome monospace font to Operator Mono Nerd Font"
         gsettings set org.gnome.desktop.interface monospace-font-name 'SauceCodePro Nerd Font Mono Regular 14'
       else
@@ -64,8 +63,8 @@ case $INSTALL_TYPE in
         echo "Cool! Es wird ein Server sein!";;
     2 | Desktop | desktop | gnome | noob)
         echo "Desktop! Gnome ist das Beste!"
-        check_nerd_font();
-    *)
+        check_nerd_font;;
+    *) # Added missing bracket
         echo "Ich bin mir nicht sicher, was Sie wollen ... Versuchen Sie es erneut? (I'm not sure what you want... try again?)"
         exit 1;;
 esac
