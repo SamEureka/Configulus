@@ -180,9 +180,9 @@ EOL
 }
  
 
-read -p "Do you want to configure the git globals with your Github info? (y/n) " call_func1
-if echo "$call_func1" | grep -Eq "^[Yy]$"; then
-    FUNCS_TO_CALL+=("config_git_globals")
+read -p "Do you want to install Powerlevel 10k? (y/n) " call_func2
+if echo "$call_func2"  ^[Yy]$ ]]; then
+    FUNCS_TO_CALL+=("install_p10k")
 fi
 
 
@@ -203,9 +203,11 @@ esac
 
 
 
-read -p "Do you want to install Powerlevel 10k? (y/n) " call_func2
-if echo "$call_func2"  ^[Yy]$ ]]; then
-    FUNCS_TO_CALL+=("install_p10k")
+
+
+read -p "Do you want to configure the git globals with your Github info? (y/n) " call_func1
+if echo "$call_func1" | grep -Eq "^[Yy]$"; then
+    FUNCS_TO_CALL+=("config_git_globals")
 fi
 
 # Check for installed packages
