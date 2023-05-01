@@ -1,4 +1,4 @@
-#!/usr/bin/env ash
+#!/usr/bin/env bash
 
 ## P10k Install Script (for Alpine)
 ## Sam Dennon // 2022
@@ -64,7 +64,7 @@ case $INSTALL_TYPE in
         echo "Cool! Es wird ein Server sein!";;
     2 | Desktop | desktop | gnome | noob)
         echo "Desktop! Gnome ist das Beste!"
-        check_nerd_font();;
+        check_nerd_font();
     *)
         echo "Ich bin mir nicht sicher, was Sie wollen ... Versuchen Sie es erneut? (I'm not sure what you want... try again?)"
         exit 1;;
