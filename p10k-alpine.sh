@@ -33,7 +33,7 @@ check_and_install_you_some_bash(){
         TIMEOUT_COUNT=0
     else
         echo "get you some bash!"
-        if let "TIMEOUT_COUNT < 3"; then
+        if [ "$TIMEOUT_COUNT" -lt 3 ]; then
             echo "let there be bash!"
             install_bash
         else
@@ -105,7 +105,7 @@ check_installed_packages (){
     INSTALLED_PACKAGES=$(apk info -e $PACKAGES)
     for package in $INSTALLED_PACKAGES; do
         PACKAGES=$(echo "$PACKAGES" | sed "s/\b$package\b//g")
-    done)
+    done
 }
 
 install_missing_packages() {
@@ -116,7 +116,7 @@ install_missing_packages() {
 
 install_zsh() {
         apk add zsh
-        let "TIMEOUT_COUNT++"
+        TIMEOUT_COUNT=$((TIMEOUT_COUNT+1))
         zsh_check
 }
 
@@ -126,7 +126,7 @@ zsh_check() {
         TIMEOUT_COUNT=0
     else
         echo "Zsh is not installed."
-        if let "TIMEOUT_COUNT < 3"; then
+        if [ "$TIMEOUT_COUNT" -lt 3 ]; then
                 echo "Trying to install Zsh..."
                 install_zsh
         else
