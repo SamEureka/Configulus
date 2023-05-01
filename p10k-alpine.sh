@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 ## P10k Install Script (for Alpine)
 ## Sam Dennon // 2022
