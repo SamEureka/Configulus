@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 
 ## P10k Install Script (for Alpine)
 ## Sam Dennon // 2022
@@ -11,7 +11,7 @@ PACKAGES="git nano zsh bash neofetch shadow"
 FUNCS_TO_CALL=()
 
 ## root or sudo check
-function root_sudo_check() {
+root_sudo_check() {
     if [ "$(id -u)" -eq 0 ]; then
         echo "You have permission to run this script as root."
     else
@@ -25,7 +25,7 @@ function root_sudo_check() {
 }
 
 ## Get some Github infos
-function get_github_info() {
+get_github_info() {
     echo "We need to collect some info from you."
     read -p 'Github username: ' GH_USERNAME
     read -p 'Github email address: ' GH_EMAIL
@@ -52,7 +52,7 @@ function get_github_info() {
 }
 
 ## ~~TODO ask if this will be a Desktop or Server install~~
-function check_nerd_font() {
+check_nerd_font() {
     if fc-list | grep -q "Operator Mono Lig Book NF.otf"; then
         echo "Setting Gnome monospace font to Operator Mono Nerd Font"
         gsettings set org.gnome.desktop.interface monospace-font-name 'SauceCodePro Nerd Font Mono Regular 14'
@@ -65,30 +65,30 @@ function check_nerd_font() {
 
 ## TODO Add some OS Distro checking stuff...
 
-function check_installed_packages (){
+check_installed_packages (){
     # Get the community repositoria going
     sed -i '/^#http:\/\/dl-cdn.alpinelinux.org\/alpine\/v.*\/community/s/^#//' /etc/apk/repositories
     apk update -q
     # remove any installed packages from the package list
     INSTALLED_PACKAGES=$(apk info -e $PACKAGES)
     for package in $INSTALLED_PACKAGES; do
-        PACKAGES=$(echo $PACKAGES | sed "s/\b$package\b//g")
+        PACKAGES=$(echo "$PACKAGES" | sed "s/\b$package\b//g")
     done
 }
 
-function install_missing_packages() {
+install_missing_packages() {
     check_installed_packages
     echo "Installing the following missing packages: $PACKAGES"
     apk add $PACKAGES
 }
 
-function install_zsh() {
+install_zsh() {
         apk add zsh
         let "TIMEOUT_COUNT++"
         zsh_check
 }
 
-function zsh_check() {
+zsh_check() {
     if test -f /bin/zsh; then
         echo "Zsh is installed."
         TIMEOUT_COUNT=0
@@ -104,12 +104,12 @@ function zsh_check() {
     fi
 }
 
-function get_username(){
+get_username(){
     read -p 'Your username on this system: ' USER
     echo "System username: $USER"
 }
 
-function change_shell(){
+change_shell(){
     get_username
     echo "Checking for Zsh installation..."
     zsh_check
@@ -117,7 +117,7 @@ function change_shell(){
     sudo chsh -s /bin/zsh $USER
 }
 
-function config_git_globals() {
+config_git_globals() {
     get_github_info
     git config --global user.name $GH_USERNAME
     git config --global user.email $GH_EMAIL
@@ -125,7 +125,7 @@ function config_git_globals() {
     echo "Git globals configurated!"
 }
 
-function install_p10k() {
+install_p10k() {
     change_shell
     sudo -u $USER -s -- <<EOL    
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
@@ -195,6 +195,6 @@ for func_name in "${FUNCS_TO_CALL[@]}"; do
         "check_nerd_font") check_nerd_font ;;
         "install_missing_packages") install_missing_packages ;;
         "install_p10k") install_p10k ;;
-        *) echo "Invalid function name h@x0r, lol: $func_name"; exit 1337 ;;
+        *) echo "Invalid name h@x0r, lol: $func_name"; exit 1337 ;;
     esac
 done
