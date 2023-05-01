@@ -6,7 +6,7 @@
 ## Translation by ChatGPT # LOL ##
 
 ## root or sudo check
-if [[ $EUID -eq 0 ]]; then
+if [ "$(id -u)" -eq 0 ]; then
     echo "You have permission to run this script as root."
 else
     if groups $USER | grep -q sudo; then
