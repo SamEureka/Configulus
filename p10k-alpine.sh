@@ -51,7 +51,7 @@ check_and_install_you_some_bash
 
 ## it's all bash below this line... be wary! ##
 
-exec bash <<'EOB'
+exec bash <<EOB
 PACKAGES="git nano zsh curl sudo neofetch shadow util-linux"
 FUNCS_TO_CALL=()
 
