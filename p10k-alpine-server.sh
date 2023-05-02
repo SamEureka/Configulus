@@ -1,13 +1,13 @@
 #!/bin/bash
 
-## P10k Install Script (for Alpine)
+## P10k Install Script (for Alpine servers)
 ## Sam Dennon // 2022
 ## Updated: 27APR2023
 ## German translations by ChatGPT # LOL ##
 
 # Globals
 TIMEOUT_COUNT=0
-PACKAGES="git nano zsh bash curl sudo neofetch shadow util-linux"
+PACKAGES="git nano zsh curl sudo neofetch shadow util-linux"
 FUNCS_TO_CALL=""
 
 ## root or sudo check
@@ -24,20 +24,3 @@ root_sudo_check() {
     fi
 }
 
-
-check_and_install_you_some_bash(){
-    local TIMEOUT_COUNT=0
-    while [ ! -f "/bin/bash" ] && [ "$TIMEOUT_COUNT" -lt 3 ]; do
-        echo "get you some bash!"
-        echo "let there be bash!"
-        apk add bash
-        let "TIMEOUT_COUNT++"
-    done
-    
-    if [ -f "/bin/bash" ]; then
-        echo "We have positive bashage!"
-    else
-        echo "We tried a few times.... no bash for you."
-        exit 1337
-    fi
-}
