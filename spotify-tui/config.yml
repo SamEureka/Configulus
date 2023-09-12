@@ -45,33 +45,34 @@ behavior:
   # Sets the window title to "spt - Spotify TUI" via ANSI escape code.
   set_window_title: true
 
-keybindings:
+# Use the default keybindings, I already know them.
+# keybindings:
   # Key stroke can be used if it only uses two keys:
   # ctrl-q works,
   # ctrl-alt-q doesn't.
-  back: "ctrl-q"
+  # back: "ctrl-q"
 
-  jump_to_album: "a"
+  # jump_to_album: "a"
 
   # Shift modifiers use a capital letter (also applies with other modifier keys
   # like ctrl-A)
-  jump_to_artist_album: "A"
+  # jump_to_artist_album: "A"
 
-  manage_devices: "d"
-  decrease_volume: "-"
-  increase_volume: "+"
-  toggle_playback: " "
-  seek_backwards: "<"
-  seek_forwards: ">"
-  next_track: "n"
-  previous_track: "p"
-  copy_song_url: "c"
-  copy_album_url: "C"
-  help: "?"
-  shuffle: "ctrl-s"
-  repeat: "r"
-  search: "/"
-  audio_analysis: "v"
-  jump_to_context: "o"
-  basic_view: "B"
-  add_item_to_queue: "z"
+  # manage_devices: "d"
+  # decrease_volume: "-"
+  # increase_volume: "+"
+  # toggle_playback: " "
+  # seek_backwards: "<"
+  # seek_forwards: ">"
+  # next_track: "n"
+  # previous_track: "p"
+  # copy_song_url: "c"
+  # copy_album_url: "C"
+  # help: "?"
+  # shuffle: "ctrl-s"
+  # repeat: "r"
+  # search: "/"
+  # audio_analysis: "v"
+  # jump_to_context: "o"
+  # basic_view: "B"
+  # add_item_to_queue: "z"
