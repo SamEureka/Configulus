@@ -70,4 +70,3 @@ index 48b96d21..d42cc3ea 100755$
          # Add newlines to the string.$
          cols=${cols%%nl}$
  ```
-~~GPG~~
