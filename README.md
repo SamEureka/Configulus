@@ -1,6 +1,9 @@
 # Configulus
 
-This is a collection of scripts that I use to setup Linux workstations. I prefer Gnome, ZSH, Powerlevel10k, Alpine & Ubuntu Linux (I would daily drive Alpine Gnome if Alpine was glbic and not musl libc based), VSCode, and Chrome (not Chromium). I got tired of all the google searching for "how do I install that thing again?" and typing all those commands! 
+___Update___  //12SEP2023
+> I'm climing the steep learning curve of NixOS / Flakes / Home-Manager... this repo is now more of a scratch pad of scrips and code and whatnots. Long term plan: move this stuff to gists and Configulus repo will contain my NixOS configs and home dotfiles. I've also discovered the joy of tiling window managers. Gnome/Ubuntu love is now depreciated 😉
+
+This is a collection of scripts that I use to setup Linux workstations. I prefer ~~Gnome~~ Hyprland, ZSH, Powerlevel10k, Alpine & ~~Ubuntu~~ **NixOS** Linux (I would daily drive Alpine ~~Gnome~~ i3wm if Alpine was glbic and not musl libc based), VSCode, and Chrome (not Chromium). I got tired of all the google searching for "how do I install that thing again?" and typing all those commands! 
 
 ### Rami
 * 'main' contains Ubuntu specific scripts
