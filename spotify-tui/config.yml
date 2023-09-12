@@ -1,0 +1,77 @@
+#    ░█▀▀░█▀█░█▀█░▀█▀░▀█▀░█▀▀░█░█░░░░░▀█▀░█░█░▀█▀
+#    ░▀▀█░█▀▀░█░█░░█░░░█░░█▀▀░░█░░▄▄▄░░█░░█░█░░█░
+#    ░▀▀▀░▀░░░▀▀▀░░▀░░▀▀▀░▀░░░░▀░░░░░░░▀░░▀▀▀░▀▀▀
+#                     (c) Sam Dennon // 11SEP2023
+#                     * Theme colors sourced from
+#                     ayu-theme/ayu-colors (dark)
+#                        - It's kind-of obnoxious
+theme:
+  error_border: "240, 113, 120" # error dialog border is "syntax.markup" (#F07178)
+  error_text: "242, 109, 120" # error message text (e.g. "Spotify API reported error 404") is "vcs.removed" (#F26D78)
+  hint: "230, 182, 115" # hint text in errors Yellow "common.accent" (#E6B450)
+  playbar_background: "242, 150, 104" # background of progress bar "syntax.operator" (#F29668)
+  playbar_progress: "57, 186, 230" # filled-in part of the progress bar "syntax.entity" (#59C2FF)
+  playbar_progress_text: "17, 21, 28" # song length and time played/left indicator in the progress bar "ui.line" (#11152C)
+  playbar_text: "242, 150, 104" # artist name in player pane is "syntax.operator" (#F29668)
+  inactive: "57, 186, 230" # borders of inactive panes "syntax.entity" (#59C2FF)
+  text: "230, 182, 115" # text in panes is "syntax.special" (#E6B673)
+  active: "240, 150,104" # current playing song in list "syntax.operator" (#F29668)
+  banner: "240, 113, 120" # the "spotify-tui" banner on launch "syntax.markup" (#F07178)
+  hovered: "255,143, 64" # hovered pane border "syntax.keyword" (#FF8F40)
+  selected: "127, 217, 98" # a) selected pane border, b) hovered item in list, & c) track title in player is "vcs.added" (#7FD962)
+  header: "191, 189, 182" # header text in panes (e.g. 'Title', 'Artist', etc.) is "syntax.special" (#BFBDB6)
+
+behavior:
+  seek_milliseconds: 5000
+  volume_increment: 10
+  # The lower the number the higher the "frames per second". You can decrease this number so that the audio visualisation is smoother but this can be expensive!
+  tick_rate_milliseconds: 250
+  # Enable text emphasis (typically italic/bold text styling). Disabling this might be important if the terminal config is otherwise restricted and rendering text escapes interferes with the UI.
+  enable_text_emphasis: true
+  # Controls whether to show a loading indicator in the top right of the UI whenever communicating with Spotify API
+  show_loading_indicator: true
+  # Disables the responsive layout that makes the search bar smaller on bigger
+  # screens and enforces a wide search bar
+  enforce_wide_search_bar: false
+  # Determines the text icon to display next to "liked" Spotify items, such as
+  # liked songs and albums, or followed artists. Can be any length string.
+  # These icons require a patched nerd font.
+  liked_icon: 💚
+  shuffle_icon: 🔀
+  repeat_track_icon: 🔂
+  repeat_context_icon: 🔁
+  playing_icon: 👉
+  paused_icon: ✋
+  # Sets the window title to "spt - Spotify TUI" via ANSI escape code.
+  set_window_title: true
+
+keybindings:
+  # Key stroke can be used if it only uses two keys:
+  # ctrl-q works,
+  # ctrl-alt-q doesn't.
+  back: "ctrl-q"
+
+  jump_to_album: "a"
+
+  # Shift modifiers use a capital letter (also applies with other modifier keys
+  # like ctrl-A)
+  jump_to_artist_album: "A"
+
+  manage_devices: "d"
+  decrease_volume: "-"
+  increase_volume: "+"
+  toggle_playback: " "
+  seek_backwards: "<"
+  seek_forwards: ">"
+  next_track: "n"
+  previous_track: "p"
+  copy_song_url: "c"
+  copy_album_url: "C"
+  help: "?"
+  shuffle: "ctrl-s"
+  repeat: "r"
+  search: "/"
+  audio_analysis: "v"
+  jump_to_context: "o"
+  basic_view: "B"
+  add_item_to_queue: "z"
