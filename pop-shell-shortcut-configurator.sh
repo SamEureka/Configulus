@@ -4,7 +4,7 @@
 #░█▀▀░█░█░█▀▀░░░▀▀█░█▀█░█▀▀░█░░░█░░░░░█░░░█░█░█░█░█▀▀░░█░░█░█░█░█░█▀▄░█▀█░░█░░█▀▄
 #░▀░░░▀▀▀░▀░░░░░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░░░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░▀░░▀░░▀░▀
 # Original: https://github.com/pop-os/shell/blob/master_jammy/scripts/configure.sh
-# SamEureka: 
+# SamEureka: https://github.com/SamEureka/Configulus/blob/main/pop-shell-shortcut-configurator.sh
 
 set -ex
 
@@ -114,7 +114,7 @@ set_keybindings() {
   # Unset switch-to-application keybindings that may conflict
   for i in {1..10}
   do
-    actionItem="${KEYS_GNOME_WM}/switch-to-application-${i}"
+    actionItem="${KEYS_GNOME_SHELL}/switch-to-application-${i}"
     if dconf write "${actionItem}" "['']"; then
       echo "Unset ${actionItem}"
     else
@@ -136,7 +136,7 @@ set_keybindings() {
   # Set the keykindings for moving applications to numbered workspaces
   for k in {1..10}
   do
-    actionItem="${KEYS_GNOME_WM}/move-to-workspace-${k}"
+    actionItem="${KEYS_GNOME_WMYS_GNOME_WM}/move-to-workspace-${k}"
     if dconf write "${actionItem}" "['<Super><Shift>${k}']"; then
       echo "Set ${actionItem} ${k}"
     else
@@ -164,3 +164,7 @@ fi
 
 # Workspaces spanning displays works better with Pop Shell
 dconf write ${MUTTER}/workspaces-only-on-primary false
+
+
+# Make it Dark
+dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
