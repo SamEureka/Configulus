@@ -44,72 +44,53 @@ set_keybindings() {
   PREFS_GNOME_WM=/org/gnome/desktop/wm/preferences
   SHELL=/org/gnome/shell
 
+set_gnome_setting() {
+  key=$1
+  value=$2
+  dconf write $key $value
+}
 
-  # Disable incompatible shortcuts
-  # Restore the keyboard shortcuts: disable <Super>Escape
-  dconf write ${KEYS_MUTTER_WAYLAND_RESTORE} "@as []"
-  # Hide window: disable <Super>h
-  dconf write ${KEYS_GNOME_WM}/minimize "@as ['<Super>comma']"
-  # Open the application menu: disable <Super>m
-  dconf write ${KEYS_GNOME_SHELL}/open-application-menu "@as []"
-  # Toggle message tray: disable <Super>m
-  dconf write ${KEYS_GNOME_SHELL}/toggle-message-tray "@as ['<Super>v']"
-  # Show the activities overview: disable <Super>s
-  dconf write ${KEYS_GNOME_SHELL}/toggle-overview "@as []"
-  # Switch to workspace left: disable <Super>Left
-  dconf write ${KEYS_GNOME_WM}/switch-to-workspace-left "@as []"
-  # Switch to workspace right: disable <Super>Right
-  dconf write ${KEYS_GNOME_WM}/switch-to-workspace-right "@as []"
-  # Maximize window: disable <Super>Up
-  dconf write ${KEYS_GNOME_WM}/maximize "@as []"
-  # Restore window: disable <Super>Down
-  dconf write ${KEYS_GNOME_WM}/unmaximize "@as []"
-  # Move to monitor up: disable <Super><Shift>Up
-  dconf write ${KEYS_GNOME_WM}/move-to-monitor-up "@as []"
-  # Move to monitor down: disable <Super><Shift>Down
-  dconf write ${KEYS_GNOME_WM}/move-to-monitor-down "@as []"
+# Define GNOME settings as an associative array
+declare -A settings
 
-  # Super + direction keys, move window left and right monitors, or up and down workspaces
-  # Move window one monitor to the left
-  dconf write ${KEYS_GNOME_WM}/move-to-monitor-left "@as []"
-  # Move window one workspace down
-  dconf write ${KEYS_GNOME_WM}/move-to-workspace-down "@as []"
-  # Move window one workspace up
-  dconf write ${KEYS_GNOME_WM}/move-to-workspace-up "@as []"
-  # Move window one monitor to the right
-  dconf write ${KEYS_GNOME_WM}/move-to-monitor-right "@as []"
+settings=(
+  ["${KEYS_MUTTER_WAYLAND_RESTORE}"]="'@as []'"
+  ["${KEYS_GNOME_WM}/minimize"]="'@as ['<Super>comma']'"
+  ["${KEYS_GNOME_SHELL}/open-application-menu"]="'@as []'"
+  ["${KEYS_GNOME_SHELL}/toggle-message-tray"]="'@as ['<Super>v']'"
+  ["${KEYS_GNOME_SHELL}/toggle-overview"]="'@as []'"
+  ["${KEYS_GNOME_WM}/switch-to-workspace-left"]="'@as []'"
+  ["${KEYS_GNOME_WM}/switch-to-workspace-right"]="'@as []'"
+  ["${KEYS_GNOME_WM}/maximize"]="'@as []'"
+  ["${KEYS_GNOME_WM}/unmaximize"]="'@as []'"
+  ["${KEYS_GNOME_WM}/move-to-monitor-up"]="'@as []'"
+  ["${KEYS_GNOME_WM}/move-to-monitor-down"]="'@as []'"
+  ["${KEYS_GNOME_WM}/move-to-monitor-left"]="'@as []'"
+  ["${KEYS_GNOME_WM}/move-to-workspace-down"]="'@as []'"
+  ["${KEYS_GNOME_WM}/move-to-workspace-up"]="'@as []'"
+  ["${KEYS_GNOME_WM}/move-to-monitor-right"]="'@as []'"
+  ["${KEYS_GNOME_WM}/switch-to-workspace-down"]="['<Primary><Super>Down','<Primary><Super>${down}']"
+  ["${KEYS_GNOME_WM}/switch-to-workspace-up"]="['<Primary><Super>Up','<Primary><Super>${up}']"
+  ["${KEYS_MUTTER}/toggle-tiled-left"]="'@as []'"
+  ["${KEYS_MUTTER}/toggle-tiled-right"]="'@as []'"
+  ["${KEYS_GNOME_WM}/toggle-maximized"]="['<Super>m']"
+  ["${KEYS_MEDIA}/screensaver"]="['<Super>Escape']"
+  ["${KEYS_MEDIA}/home"]="['<Super>f']"
+  ["${KEYS_MEDIA}/email"]="['<Super>e']"
+  ["${KEYS_MEDIA}/www"]="['<Super>b']"
+  ["${KEYS_MEDIA}/terminal"]="['<Super>t']"
+  ["${KEYS_MEDIA}/rotate-video-lock-static"]="'@as []'"
+  ["${KEYS_GNOME_WM}/close"]="['<Super>q', '<Alt>F4']"
+  ["${MUTTER}/dynamic-workspaces"]="false"
+  ["${PREFS_GNOME_WM}/num-workspaces"]="10"
+  ["${SHELL}/disable-user-extensions"]="false"
+  ["${MUTTER}/workspaces-only-on-primary"]="true"
+)
 
-  # Super + Ctrl + direction keys, change workspaces, move focus between monitors
-  # Move to workspace below
-  dconf write ${KEYS_GNOME_WM}/switch-to-workspace-down "['<Primary><Super>Down','<Primary><Super>${down}']"
-  # Move to workspace above
-  dconf write ${KEYS_GNOME_WM}/switch-to-workspace-up "['<Primary><Super>Up','<Primary><Super>${up}']"
-
-  # Disable tiling to left / right of screen
-  dconf write ${KEYS_MUTTER}/toggle-tiled-left "@as []"
-  dconf write ${KEYS_MUTTER}/toggle-tiled-right "@as []"
-
-  # Toggle maximization state
-  dconf write ${KEYS_GNOME_WM}/toggle-maximized "['<Super>m']"
-  # Lock screen
-  dconf write ${KEYS_MEDIA}/screensaver "['<Super>Escape']"
-  # Home folder
-  dconf write ${KEYS_MEDIA}/home "['<Super>f']"
-  # Launch email client
-  dconf write ${KEYS_MEDIA}/email "['<Super>e']"
-  # Launch web browser
-  dconf write ${KEYS_MEDIA}/www "['<Super>b']"
-  # Launch terminal
-  dconf write ${KEYS_MEDIA}/terminal "['<Super>t']"
-  # Rotate Video Lock
-  dconf write ${KEYS_MEDIA}/rotate-video-lock-static "@as []"
-
-  # Close Window
-  dconf write ${KEYS_GNOME_WM}/close "['<Super>q', '<Alt>F4']"
-
-  # Setup <super>numbered workspace switching
-  dconf write ${MUTTER}/dynamic-workspaces false
-  dconf write ${PREFS_GNOME_WM}/num-workspaces 10
+# Loop over the settings and apply them
+for key in "${!settings[@]}"; do
+  eval "set_gnome_setting $key ${settings[$key]}"
+done
 
   # Unset switch-to-application keybindings that may conflict
   for i in {1..10}
@@ -143,24 +124,14 @@ set_keybindings() {
       echo "errror, does not compute ${actionItem} ${k}"
     fi
   done
+
+  echo "GNOME settings applied successfully."
 }
 
-if ! command -v gnome-extensions >/dev/null; then
-    echo 'You must install gnome-extensions to configure or enable via this script'
-    '(`gnome-shell` on Debian systems, `gnome-extensions` on openSUSE systems.)'
-    exit 1
-fi
-
 set_keybindings
-
-# Make sure user extensions are enabled
-dconf write ${SHELL}/disable-user-extensions false
 
 # Use a window placement behavior which works better for tiling
 
 if gnome-extensions list | grep native-window; then
     gnome-extensions enable $(gnome-extensions list | grep native-window)
 fi
-
-# Workspaces spanning displays works better with Pop Shell
-dconf write ${MUTTER}/workspaces-only-on-primary false
