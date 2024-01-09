@@ -74,7 +74,7 @@ wget -qO- https://bit.ly/NVM-Install | bash
 **Nano Syntax:**
 ```bash
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
-```bash
+```
 
 ## Habemus
 
