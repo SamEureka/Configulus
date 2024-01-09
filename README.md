@@ -25,34 +25,61 @@ This is a collection of scripts that I use to setup Linux workstations. I prefer
 
 ## Scripta
 
-**NerdFonts:** `sh -c "$(wget -q -O- https://bit.ly/NerdFonts)"` 
+**NerdFonts:** 
+```bash
+sh -c "$(wget -q -O- https://bit.ly/NerdFonts)"
+``` 
 
-**Etcher:** `sh -c "$(wget -q -O- https://bit.ly/etcher-install)"`
+**Etcher:** 
+```bash
+sh -c "$(wget -q -O- https://bit.ly/etcher-install)"
+```
 
 **balena-cli:** 
-
-`sh -c "$(wget -q -O- https://bit.ly/balena-cli)"` 
+```bash
+sh -c "$(wget -q -O- https://bit.ly/balena-cli)"
+```
 
 -or- 
 
-`sh -c "$(wget -q -O- https://bit.ly/balena-cli)" -s <version>`
+```bash
+sh -c "$(wget -q -O- https://bit.ly/balena-cli)" -s <version>
+```
 
-**gh-cli:** `curl https://shortenedurl | bash -s`
+**gh-cli:**
+```bash
+curl https://shortenedurl | bash -s
+```
 
-**Powerlevel10k:** `sh -c "$(wget -q -O- https://bit.ly/powerlevel10k)"`
+**Powerlevel10k:** 
+```bash
+sh -c "$(wget -q -O- https://bit.ly/powerlevel10k)"
+```
 
-**Powerlevel10k Alpine:** `sh -c "$(wget -q -O- https://bit.ly/p10k-alpine)"`
+**Powerlevel10k Alpine:** 
+```bash
+sh -c "$(wget -q -O- https://bit.ly/p10k-alpine)"
+```
 
-**Alpine KVM Install** `sh -c "$(wget -q -O- https://bit.ly/alpine-kvm)"`
+**Alpine KVM Install**
+```bash
+sh -c "$(wget -q -O- https://bit.ly/alpine-kvm)"
+```
 
-**NVM:** `wget -qO- https://bit.ly/NVM-Install | bash`
+**NVM:**
+```bash
+wget -qO- https://bit.ly/NVM-Install | bash
+```
 
-**Nano Syntax:** `curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh`
+**Nano Syntax:**
+```bash
+curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+```bash
 
 ## Habemus
 
 Neofetch ubuntu issue
-```
+```bash
 $ git diff neofetch| cat -A
 diff --git a/neofetch b/neofetch$
 index 48b96d21..d42cc3ea 100755$
