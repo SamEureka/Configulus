@@ -6,6 +6,12 @@
 # Original: https://github.com/pop-os/shell/blob/master_jammy/scripts/configure.sh
 # SamEureka: 
 
+#################################################################
+# Very broken...
+# need to re-write the whole thing
+#################################################################
+
+
 set -ex
 
 shortcut_applied() {
@@ -93,26 +99,30 @@ for key in "${!settings[@]}"; do
 done
 
   # Unset switch-to-application keybindings that may conflict
-  for i in {1..10}
-  do
-    actionItem="${KEYS_GNOME_WM}/switch-to-application-${i}"
-    if dconf write "${actionItem}" "['']"; then
-      echo "Unset ${actionItem}"
-    else
-      echo "Failed to unset ${actionItem}"
-    fi   
-  done
+  for i in {1..9}; do gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]";done
+
+  # for i in {1..10}
+  # do
+  #   actionItem="${KEYS_GNOME_WM}/switch-to-application-${i}"
+  #   if dconf write "${actionItem}" "['']"; then
+  #     echo "Unset ${actionItem}"
+  #   else
+  #     echo "Failed to unset ${actionItem}"
+  #   fi   
+  # done
 
   # Set the keybindings for the <Super>number switching
-  for j in {1..10}
-  do
-    actionItem="${KEYS_GNOME_WM}/switch-to-workspace-${j}"
-    if dconf write "${actionItem}" "['<Super>${j}']"; then
-      echo "Set ${actionItem}"
-    else
-      echo "errror, does not compute ${actionItem} ${j}"
-    fi
-  done
+  for i in {1..9}; do gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']";done
+
+  # for j in {1..10}
+  # do
+  #   actionItem="${KEYS_GNOME_WM}/switch-to-workspace-${j}"
+  #   if dconf write "${actionItem}" "['<Super>${j}']"; then
+  #     echo "Set ${actionItem}"
+  #   else
+  #     echo "errror, does not compute ${actionItem} ${j}"
+  #   fi
+  # done
 
   # Set the keykindings for moving applications to numbered workspaces
   for k in {1..10}
